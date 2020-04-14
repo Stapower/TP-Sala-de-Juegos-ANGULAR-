@@ -26,6 +26,7 @@
         </ul>
     </div>
   </nav-->
+<!--body>
   <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -40,8 +41,14 @@
                 <li class="active"><a routerLink="/Juegos">Menú de Juegos</a></li>
                 <li><a data-toggle="tooltip" title="Hooray!" (click)="Juego('Adivina')">Adivina</a></li>
                 <li><a  (click)="Juego('Agilidad')">Agilidad</a></li>
-                <li><a  (click)="Juego('AdivinaMasListado')">Adivina+listado</a></li>
-                <li><a  (click)="Juego('AgilidadaMasListado')">Agilidad+listado</a></li>
+                <!--li><a  (click)="Juego('AdivinaMasListado')">Adivina+listado</a></li>
+                <li><a  (click)="Juego('AgilidadaMasListado')">Agilidad+listado</a></li-->
+                <!--li><a  (click)="Juego('Anagrama')">Anagrama</a></li>
+                <li><a  (click)="Juego('PPTLS')">Piedra Papel...</a></li>
+                <li><a  (click)="Juego('JuegoDeMemoria')">Memoria</a></li>
+                
+                
+                
               </ul>
               <ul class="nav navbar-nav navbar-right">
                   <li><a href="#"><span class="glyphicon glyphicon-user"></span> Mis Datos</a></li>
@@ -49,6 +56,12 @@
                 </ul>
         </div>
       </div>
-    </nav>
-      
-   
+    </nav-->
+    <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+        <a  class="btn" (click)="Juego('Home')">Home</a>
+        <a  class="btn" (click)="Juego('About')">About</a>
+        <a  class="btn" (click)="Juego('Adivina')">Adivina</a>
+        <a  class="btn" (click)="Juego('Agilidad')">Agilidad</a>
+        <a  class="btn" (click)="Juego('Anagrama')">Anagrama</a>
+        <a  class="btn" (click)="Juego('PPTLS')">Piedra Papel...</a>
+        <a  class="btn" (click)="Juego('JuegoDeMemoria')">Memoria</a>

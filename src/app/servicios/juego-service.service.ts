@@ -1,36 +1,28 @@
 import { Injectable } from '@angular/core';
-import { JuegoAdivina } from '../clases/juego-adivina';
-import { MiHttpService } from './mi-http/mi-http.service'; 
 import { Juego } from '../clases/juego';
+import { JuegoAdivina } from '../clases/juego-adivina';
+import { Http, Response } from '@angular/http';
+import { HttpModule } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/toPromise';
+
+
+//import {MiHttpService} from "./mi-http.service";
 
 @Injectable()
 export class JuegoServiceService {
 
-  peticion:any;
-  constructor( public miHttp: MiHttpService ) {
-    this.peticion = this.miHttp.httpGetO("http://localhost:3003");
-//    this.peticion = this.miHttp.httpGetO("https://restcountries.eu/rest/v2/all");
-  }
+  constructor(public http: Http) { }
+  url = "https://pps-tomas.000webhostapp.com/MisJuegos/juegos.php/";
+  public listar(): Promise<any> {
+    
+    return this.http
+    .get(this.url + "GetScores")
+    .toPromise()
+    .then(this.extraerDatos)
+    .catch(this.handleError);
 
-  public listar(): Array<Juego> {
-   this.miHttp.httpGetP("https://restcountries.eu/rest/v2/all")
-    .then( data => {
-      console.log( data );
-    })
-    .catch( err => {
-      console.log( err );
-    });
-   
-  
-    this.peticion
-    .subscribe( data => {
-      console.log("En listar");
-      console.log( data );
-    }, err => {
-      console.info("error: " ,err );
-    })
-
-    let miArray: Array<Juego> = new Array<Juego>();
+    /*let miArray: Array<Juego> = new Array<Juego>();
 
     miArray.push(new JuegoAdivina("Juego 1", false));
     miArray.push(new JuegoAdivina("Pepe", true));
@@ -38,17 +30,10 @@ export class JuegoServiceService {
     miArray.push(new JuegoAdivina("Juego 4", false));
     miArray.push(new JuegoAdivina("Juego 5", false));
     miArray.push(new JuegoAdivina("Juego 6", false));
-    return miArray;
+    return miArray;*/
   }
 
   public listarPromesa(): Promise<Array<Juego>> {
-    this.peticion
-    .subscribe( data => {
-      console.log("En listarPromesa");
-      console.log( data );
-    }, err => {
-      console.log( err );
-    })
     let promesa: Promise<Array<Juego>> = new Promise((resolve, reject) => {
       let miArray: Array<Juego> = new Array<Juego>();
       miArray.push(new JuegoAdivina("JuegoPromesa 1", false,"promesa"));
@@ -63,4 +48,33 @@ export class JuegoServiceService {
     return promesa;
   }
 
+  public login(url : string, objeto : any)
+  {
+    return this.http
+    .post(url,objeto)
+    .toPromise()
+    .then(this.extraerDatos)
+    .catch(this.handleError);
+  }
+
+  public guardar(puntos : number, juego : string)
+  {
+    var jugador =  localStorage.getItem('usuario');
+    var url = "https://pps-tomas.000webhostapp.com/MisJuegos/juegos.php/SaveGamesScore/"+jugador+','+puntos+','+juego;
+    return this.http
+    .get(url)
+    .toPromise()
+    .then(this.extraerDatos)
+    .catch(this.handleError);
+  
+  }
+  private extraerDatos(resp:Response) {
+
+      return resp.json() || {};
+
+  }
+  private handleError(error:Response | any) {
+
+      return error;
+  }
 }

@@ -5,20 +5,19 @@
 
 </div-->
 
-<table class="table table-condensed">
-    <thead>
-      <tr>
+<table class="table table-bordered table-responsive">
+  <thead class="thead-inverse">
+    <tr class="active"> 
         <th>Juego</th>
         <th>Jugador</th>
-        <th>Resultado</th>
+        <th>Puntos</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let juego of listado">
-        <td>{{juego.nombre}} </td>
-        <td>{{juego.jugador}} </td> 
-        <td *ngIf="juego.gano">Gano </td>   
-        <td *ngIf="!juego.gano">Perdio</td>     
+        <td>{{juego.juego}}</td>
+        <td >{{juego.usuario}}</td > 
+        <td>{{juego.puntos}}</td>    
       </tr>
      
     </tbody>

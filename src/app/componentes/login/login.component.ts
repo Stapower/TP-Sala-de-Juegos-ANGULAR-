@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import {Subscription} from "rxjs";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
+import {JuegoServiceService} from "../../servicios/juego-service.service";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,18 +12,20 @@ import {TimerObservable} from "rxjs/observable/TimerObservable";
 export class LoginComponent implements OnInit {
 
   private subscription: Subscription;
-  usuario = '';
-  clave= '';
+  usuario = 'Pepito';
+  clave= '123456';
   progreso: number;
   progresoMensaje="esperando..."; 
   logeando=true;
   ProgresoDeAncho:string;
+  url = "https://pps-tomas.000webhostapp.com/MisJuegos/juegos.php/login";
 
   clase="progress-bar progress-bar-info progress-bar-striped ";
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private ws: JuegoServiceService) {
       this.progreso=0;
       this.ProgresoDeAncho="0%";
 
@@ -32,15 +35,28 @@ export class LoginComponent implements OnInit {
   }
 
   Entrar() {
-    if (this.usuario === 'admin' && this.clave === 'admin') {
+    console.log('entro');
+    this.ws.login(this.url,{
+        username: this.usuario,
+        password: this.clave 
+      })
+    .then( data => {
+    console.info("data>>>",data);
+    this.router.navigate(['/Principal']);
+  })
+  .catch( e => {
+    console.info(e);
+  } );
+  localStorage.setItem('usuario', this.usuario);    
+    /*if (this.usuario === 'admin' && this.clave === 'admin') {
       this.router.navigate(['/Principal']);
-    }
+    }*/
   }
   MoverBarraDeProgreso() {
     
     this.logeando=false;
     this.clase="progress-bar progress-bar-danger progress-bar-striped active";
-    this.progresoMensaje="NSA spy..."; 
+    this.progresoMensaje="Iniciando Sesion..."; 
     let timer = TimerObservable.create(200, 50);
     this.subscription = timer.subscribe(t => {
       console.log("inicio");
@@ -49,26 +65,14 @@ export class LoginComponent implements OnInit {
       switch (this.progreso) {
         case 15:
         this.clase="progress-bar progress-bar-warning progress-bar-striped active";
-        this.progresoMensaje="Verificando ADN..."; 
+        this.progresoMensaje="Verificando..."; 
           break;
         case 30:
           this.clase="progress-bar progress-bar-Info progress-bar-striped active";
           this.progresoMensaje="Adjustando encriptación.."; 
-          break;
-          case 60:
-          this.clase="progress-bar progress-bar-success progress-bar-striped active";
-          this.progresoMensaje="Recompilando Info del dispositivo..";
-          break;
-          case 75:
-          this.clase="progress-bar progress-bar-success progress-bar-striped active";
-          this.progresoMensaje="Recompilando claves facebook, gmail, chats..";
-          break;
-          case 85:
-          this.clase="progress-bar progress-bar-success progress-bar-striped active";
-          this.progresoMensaje="Instalando KeyLogger..";
-          break;
-          
+          break;        
         case 100:
+        this.progresoMensaje="Listo!";
           console.log("final");
           this.subscription.unsubscribe();
           this.Entrar();
