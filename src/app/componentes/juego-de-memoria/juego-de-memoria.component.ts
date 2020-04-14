@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, AfterViewChecked} from '@angular/core';
-import { JuegoMemoria } from './../../clases/juego-Memoria';
+import { JuegoMemoria } from '../../clases/juego-Memoria';
 
 //import { JuegoMemoria } from '../../clases/juego-Memoria';
 import {Observable} from 'rxjs/Rx';
 import {JuegoServiceService} from "../../servicios/juego-service.service";
-//import * as $ from 'jquery';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-juego-de-memoria',
