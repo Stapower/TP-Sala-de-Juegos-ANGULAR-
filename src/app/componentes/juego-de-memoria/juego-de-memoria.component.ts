@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, AfterViewChecked} from '@angular/core';
-import { JuegoMemoria } from '../../clases/juego-Memoria';
+
+//import { JuegoMemoria } from '../../clases/juego-Memoria';
 
 //import { JuegoMemoria } from '../../clases/juego-Memoria';
 import {Observable} from 'rxjs/Rx';
@@ -43,7 +44,7 @@ export class JuegoDeMemoriaComponent implements OnInit {
 
   meSelecciono(carta : any)
   {
-    if(!this.juego.perdio)
+    /*if(!this.juego.perdio)
     {
       //$('#'+'div'+carta.posicion).toggleClass('flipHover');            
       $('#checkbox'+carta.posicion).prop('checked', true)
@@ -54,12 +55,12 @@ export class JuegoDeMemoriaComponent implements OnInit {
         this.seQuedaAlguna(carta);
       },
       700); 
-    }
+    }*/
   }
 
   seQuedaAlguna(carta: any)
   {
-    console.log('fxed'+carta.fija);
+    /*console.log('fxed'+carta.fija);
     if(!carta.fija)
     {
       if(this.primerCarta != null){
@@ -91,20 +92,20 @@ export class JuegoDeMemoriaComponent implements OnInit {
       else{
         this.primerCarta = carta;
       }
-    }
+    }*/
   }
 
   guardar()
-  {
-    this.jws.guardar(this.Tiempo*2, 'memoria');
+  {/*
+    this.jws.guardar(this.Tiempo*2, 'memoria');*/
   }
 
   reiniciar()
-  {
+  {/*
     clearInterval(this.repetidor);    
-    this.juego = new JuegoMemoria();
-    this.juego.limpiarEspacio();
-    this.juego.generarParejas();
+    //this.juego = new JuegoMemoria();
+    //this.juego.limpiarEspacio();
+    //this.juego.generarParejas();
     this.mostrarTodo(true);
 
     setTimeout(() => 
@@ -122,20 +123,20 @@ export class JuegoDeMemoriaComponent implements OnInit {
     },
     2000); 
 
-    this.crono();  
+    this.crono();  */
     
   }
 
   mostrarTodo(boleano : boolean){
-    for(var index =0 ; index < this.juego.coordenadasDisponibles.length ; index++){
+    /*for(var index =0 ; index < this.juego.coordenadasDisponibles.length ; index++){
       this.juego.coordenadasDisponibles[index].mostrar=boleano;
 
         $('#checkbox'+index).prop('checked', boleano);
-      }
+      }*/
   }
   
   crono(){
-    var segundero = this.segundero;
+    /*var segundero = this.segundero;
     //var jue = this.juego;  
     //var l = document.getElementById("cronometro");
     
@@ -148,7 +149,7 @@ export class JuegoDeMemoriaComponent implements OnInit {
         this.Tiempo=110;
       }
       }, 900);
-
+*/
   }
     /*var contador = setInterval( function() {
       --segundero;
