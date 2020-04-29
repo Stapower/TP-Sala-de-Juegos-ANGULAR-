@@ -1,0 +1,45 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!--app-menu></app-menu-->
+<!-- index.html -->
+
+<body name="juego">
+	<ul>
+		<li>
+			Primer número: <input value={{nuevoJuego.numero1}}  name="numeroIngresado" placeholder="Primer número"
+				type="text" class="form-control" style="width:50%" readonly />
+
+		</li>
+		<li>
+			Operador: <input value={{nuevoJuego.operador}}  name="numeroIngresado"  placeholder="Operador"
+				type="text" class="form-control" style="width:50%" readonly />
+
+		</li>
+		<li>
+			Segundo número: <input value={{nuevoJuego.numero2}} name="numeroIngresado" placeholder="Segundo número"
+				type="text" class="form-control" style="width:50%" readonly />
+
+		</li>
+		<li>
+			Respuesta: <input [(ngModel)]="nuevoJuego.respuesta" placeholder="Respuesta" name="numeroIngresado"
+				type="text" class="form-control" style="width:50%" />
+
+			<h2 [hidden]="ocultarVerificar"><button (click)="verificar()" class="btn btn-success btn-lg">Verificar
+					{{Tiempo}} </button></h2>
+			<h2 [hidden]="!ocultarVerificar"><button (click)="NuevoJuego()" class="btn btn-info btn-lg">Nuevo</button>
+			</h2>
+
+
+		<li>
+			Esperando numero
+			<div class="lds-facebook">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+
+			<h3 [hidden]="!nuevoJuego.gano">usted adivino el número</h3>
+			<h3 [hidden]="nuevoJuego.gano">usted aún no gano </h3>
+		</li>
+	</ul>
+
+</body>

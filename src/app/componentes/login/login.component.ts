@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
   }
 
   Entrar() {
-    console.log('entro');
+    console.log('entro', this.user);
     this.fireAuth.login(this.user).then(res => {
       console.log("Success", res);
       this.router.navigate(['/Principal']);

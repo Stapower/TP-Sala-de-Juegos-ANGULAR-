@@ -26,6 +26,9 @@ import { MapaDeGoogleComponent } from '../componentes/mapa-de-google/mapa-de-goo
 import { JugadoresListadoComponent } from '../componentes/jugadores-listado/jugadores-listado.component';
 import { PiedraPapelTijeraComponent } from './../componentes/piedra-papel-tijera/piedra-papel-tijera.component';
 import {TictactoeComponent} from "../componentes/tictactoe/tictactoe.component"
+import {BoardComponent} from "../componentes/tateti/board/board.component";
+import {TatetiComponent} from "../componentes/tateti/tateti.component";
+
 
 
 
@@ -59,9 +62,7 @@ children:
 		{path: "JuegoDeMemoria", component: JuegoDeMemoriaComponent},
 		{path: "PPTLS", component: PiedraPapelTijeraComponent},
 		{path: "Anagrama", component: AnagramaComponent},
-		{path: "tateti", component: TictactoeComponent}
-		
-		
+		{path: "tateti", component: TatetiComponent}
 	]
 },
 {path: '**' , component: ErrorComponent},

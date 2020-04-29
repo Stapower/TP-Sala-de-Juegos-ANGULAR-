@@ -1,1 +1,33 @@
+<!--
 <app-board></app-board>
+-->
+
+<body>
+
+	<h1>Jugador actual: {{player}} </h1>
+
+
+	<h2>
+		<button (click)="newGame()" class="btn btn-success btn-lg">Nuevo Juego</button>
+	</h2>
+
+	<div *ngIf="true"> blabla!! </div>
+
+	<button *ngIf = "true"> blabla</button>
+
+
+	<div *ngIf="winner">
+		<h2>
+			El jugador {{winner}} ganó!
+		</h2>
+	</div>
+
+	<main>
+		<div *ngFor="let val of squares; let i = index" [value]="val" (click)="makeMove(i)">
+			<button nbButton *ngIf="!value">{{value}}</button>
+			<button nbButton hero status="success" *ngIf="value == 'X'">{{value}}</button>
+			<button nbButton hero status="info" *ngIf="value == 'O'">{{value}}</button>
+		</div>
+	</main>
+	
+</body>

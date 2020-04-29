@@ -7,6 +7,7 @@ import { ListadoDeResultadosComponent } from './componentes/listado-de-resultado
 import { LoginComponent } from './componentes/login/login.component';
 //  import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpModule } from '@angular/http';
+import { CommonModule } from '@angular/common';
 
 // import { AccordionModule } from 'ngx-bootstrap';
 // agrego las clases para utilizar ruteo
@@ -63,6 +64,9 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 
 import firebaseConfig from '../environments/environment';
+import { TatetiComponent } from './componentes/tateti/tateti.component';
+import { BoardComponent } from './componentes/tateti/board/board.component'
+import {SquareComponent } from './componentes/tateti/square/square.component';
 
 
 
@@ -90,7 +94,8 @@ import firebaseConfig from '../environments/environment';
     JuegoDeMemoriaComponent,
     //ResaltarDirective,
     //ResaltarDosDirective,
-    SexoPipe
+    SexoPipe,
+    TatetiComponent
   ],
   imports: [
     BrowserModule,
@@ -98,7 +103,7 @@ import firebaseConfig from '../environments/environment';
     RuteandoModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig.firebase),
-    AngularFireAuthModule    /*,
+    AngularFireAuthModule  /*,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB6f8x4IjRlesQ3oETc6BXYQHVRTOlY3Ys'
     })*/

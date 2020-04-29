@@ -6,14 +6,14 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyDnt-aSSpmx-f3qYwCi_TApqZq7FYdgIO0",
-    authDomain: "pps1-251a8.firebaseapp.com",
-    databaseURL: "https://pps1-251a8.firebaseio.com",
-    projectId: "pps1-251a8",
-    storageBucket: "pps1-251a8.appspot.com",
-    messagingSenderId: "1040041815117",
-    appId: "1:1040041815117:web:77f759d0baffdec46dc004",
-    measurementId: "G-32MP620R7Y"
+    apiKey: "AIzaSyAW63pv3duKQhIPJH5jcXtmQkdWkrp-Rho",
+    authDomain: "tpsaladejuegos-e55db.firebaseapp.com",
+    databaseURL: "https://tpsaladejuegos-e55db.firebaseio.com",
+    projectId: "tpsaladejuegos-e55db",
+    storageBucket: "tpsaladejuegos-e55db.appspot.com",
+    messagingSenderId: "606556451059",
+    appId: "1:606556451059:web:abbb37e9941de66d5b4786",
+    measurementId: "G-0HS7XKZN4W"
   }
 };
 

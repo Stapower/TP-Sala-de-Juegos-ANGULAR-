@@ -39,6 +39,7 @@ export class FirebaseAuth {
 
 	async login(user){
 		try{
+			console.log(user.email, user.password);
 			const res = await this.afAuth.signInWithEmailAndPassword(user.email, user.password);
 		}
 		catch(err){

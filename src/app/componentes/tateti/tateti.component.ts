@@ -1,23 +1,22 @@
-import { Component, OnInit, Input, AfterViewChecked } from '@angular/core';
+import { BoardComponent } from './../tateti/board/board.component';
+import { SquareComponent } from './../tateti/square/square.component';
+
+import { Component, OnInit, Input } from '@angular/core';
 import { NgModule} from '@angular/core';
 
-//import { SquareComponent } from '../tateti/square/square.component';
-import { CommonModule } from '@angular/common';
-import { Observable } from 'rxjs/Rx';
-import * as $ from 'jquery';
+@NgModule({
+  imports: [,
+    SquareComponent,
+    BoardComponent  
+  ]
+})
 
 @Component({
-	selector: 'app-tictactoe',
-	templateUrl: './tictactoe.component.html',
-	styleUrls: ['./tictactoe.component.css']
+  selector: 'app-tateti',
+  templateUrl: './tateti.component.html',
+  styleUrls: ['./tateti.component.css']
 })
-@NgModule({
-	imports: [
-		CommonModule
-	]
-})
-
-export class TictactoeComponent implements OnInit {
+export class TatetiComponent implements OnInit {
 	@Input() value: 'X' | 'O';
 
 	squares: string[];
@@ -43,10 +42,12 @@ export class TictactoeComponent implements OnInit {
 	makeMove(idx: number) {
 		if (!this.squares[idx]) {
 			this.squares.splice(idx, 1, this.player);
-			this.xIsNext = !this.xIsNext;
+      this.xIsNext = !this.xIsNext;
+      console.log('value inside matrix: ', this.squares[idx]);
 		}
 
-		this.winner = this.calculateWinner();
+    this.winner = this.calculateWinner();
+    console.log('leaves makeMove');
 	}
 
 	calculateWinner() {
@@ -72,4 +73,5 @@ export class TictactoeComponent implements OnInit {
 		}
 		return null;
 	}
+
 }
