@@ -1,4 +1,7 @@
-import { NgModule } from '@angular/core';
+import { AnagramaComponent } from './../componentes/anagrama/anagrama.component';
+import { JuegoPiedraPapelTijera } from './../clases/juego-piedra-papel-tijera';
+import { JuegoDeMemoriaComponent } from './../componentes/juego-de-memoria/juego-de-memoria.component';
+import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 // importo del module principal
 import { RouterModule, Routes } from '@angular/router';
@@ -21,8 +24,18 @@ import { QuienSoyComponent } from '../componentes/quien-soy/quien-soy.component'
 import { ListadoDePaisesComponent } from '../componentes/listado-de-paises/listado-de-paises.component'
 import { MapaDeGoogleComponent } from '../componentes/mapa-de-google/mapa-de-google.component'
 import { JugadoresListadoComponent } from '../componentes/jugadores-listado/jugadores-listado.component';
+import { PiedraPapelTijeraComponent } from './../componentes/piedra-papel-tijera/piedra-papel-tijera.component';
+import {TictactoeComponent} from "../componentes/tictactoe/tictactoe.component"
 
 
+
+/*
+#Anagrama.(se muestra una palabra desordenada y se debe ingresar la correcta)
+#Piedra papel tijera.(se debe elegir una de las opciones )
+#Agilidad Aritmética. (se presenta una cuenta aritmética y el jugador un tiempo para
+contestar).
+#Adivina el número.(se debe adivinar el número secreto).
+#TaTeTi*/
 // declaro donde quiero que se dirija
 const MiRuteo = [
 {path: 'Jugadores' , component: JugadoresListadoComponent},
@@ -38,11 +51,18 @@ const MiRuteo = [
 { path: 'Juegos' ,
 component: JuegosComponent ,
 children:
-     [{path: '' , component: MenuCardComponent},
-     {path: 'Adivina' , component: AdivinaElNumeroComponent},
-      {path: 'AdivinaMasListado' , component: AdivinaMasListadoComponent},
-      {path: 'AgilidadaMasListado' , component: AgilidadMasListadoComponent},
-      {path: 'Agilidad' , component: AgilidadAritmeticaComponent}]
+    [{path: '' , component: MenuCardComponent},
+    	{path: 'Adivina' , component: AdivinaElNumeroComponent},
+      	{path: 'AdivinaMasListado' , component: AdivinaMasListadoComponent},
+      	{path: 'AgilidadaMasListado' , component: AgilidadMasListadoComponent},
+      	{path: 'Agilidad' , component: AgilidadAritmeticaComponent},
+		{path: "JuegoDeMemoria", component: JuegoDeMemoriaComponent},
+		{path: "PPTLS", component: PiedraPapelTijeraComponent},
+		{path: "Anagrama", component: AnagramaComponent},
+		{path: "tateti", component: TictactoeComponent}
+		
+		
+	]
 },
 {path: '**' , component: ErrorComponent},
 {path: 'error' , component: ErrorComponent}];

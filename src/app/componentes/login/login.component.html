@@ -21,7 +21,7 @@
     </div>
   </div>
 </div-->
- <!--div class="container" >
+<!--div class="container" >
   <div class="jumbotron" style="padding:50px;">
     <form action="Entrar()">
       <div class="imgcontainer">
@@ -78,16 +78,25 @@
     </div>
   </body-->
 
-  <form class="login-form">
-      <p class="login-text">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-lock fa-stack-1x"></i>
-        </span>
-      </p>
-      <input type="email" class="login-username" autofocus="true" required="true" placeholder="Email" [(ngModel)]="usuario" name="usuario"/>
-      <input type="password" class="login-password" required="true" placeholder="Password" [(ngModel)]="clave" name="clave"/>
-      <input type="submit" name="Login" value="Login" (click)="Entrar()" class="login-submit" />
-    </form>
-    <div class="underlay-photo"></div>
-    <div class="underlay-black"></div> 
+<form class="login-form">
+	<p class="login-text">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-lock fa-stack-1x"></i>
+		</span>
+	</p>
+	<input type="email" class="login-username" autofocus="true" required="true" placeholder="Email" [(ngModel)]="user.email" name="usuario"
+	/>
+	<input type="password" class="login-password" required="true" placeholder="Password" [(ngModel)]="user.password" name="clave" />
+  <input type="submit" name="Login" value="Login" (click)="Entrar()" class="login-submit" />
+  
+  <input type="button" value="User1" class="login-submit" (click)="setLoginValues('user1@utn.com', '123456')">
+  <input type="button" value="User2" class="login-submit" (click)="setLoginValues('user2@utn.com', '123456')">
+  <input type="button" value="Admin" class="login-submit" (click)="setLoginValues('admin@utn.com', '123456')">
+
+</form>
+
+<div class="underlay-photo"></div>
+<div class="underlay-black"></div>
+
+<div id="snackbar">{{Mensajes}}</div>

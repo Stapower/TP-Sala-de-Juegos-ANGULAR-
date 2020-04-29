@@ -4,6 +4,10 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {Subscription} from "rxjs";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
 import {JuegoServiceService} from "../../servicios/juego-service.service";
+//import {FirebaseAuth} from '../../clases/firebase-auth'
+import { FirebaseAuth } from '../../clases/firebase-auth';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,40 +22,74 @@ export class LoginComponent implements OnInit {
   progresoMensaje="esperando..."; 
   logeando=true;
   ProgresoDeAncho:string;
-  url = "https://pps-tomas.000webhostapp.com/MisJuegos/juegos.php/login";
+  Mensajes: string;
+
+  //url = "https://pps-tomas.000webhostapp.com/MisJuegos/juegos.php/login";
 
   clase="progress-bar progress-bar-info progress-bar-striped ";
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private ws: JuegoServiceService) {
+    private ws: JuegoServiceService,
+    public fireAuth : FirebaseAuth) {
       this.progreso=0;
       this.ProgresoDeAncho="0%";
 
   }
 
+  private user = {
+		email: "",
+		password: ""
+	}
+
+
   ngOnInit() {
+  }
+
+
+  setLoginValues(user, pass){
+    this.user.email = user;
+    this.user.password = pass;
   }
 
   Entrar() {
     console.log('entro');
-    this.ws.login(this.url,{
-        username: this.usuario,
-        password: this.clave 
-      })
-    .then( data => {
-    console.info("data>>>",data);
-    this.router.navigate(['/Principal']);
-  })
-  .catch( e => {
-    console.info(e);
-  } );
-  localStorage.setItem('usuario', this.usuario);    
+    this.fireAuth.login(this.user).then(res => {
+      console.log("Success", res);
+      this.router.navigate(['/Principal']);
+      localStorage.setItem('usuario', this.user.email);
+    })
+    .catch(err => {
+      this.MostarMensaje(err.message);
+      console.log("Failed", err.message);
+    });
+
+
+    
+		//this.router.navigate(['/tabs/tab1']);
+
+    
     /*if (this.usuario === 'admin' && this.clave === 'admin') {
       this.router.navigate(['/Principal']);
     }*/
   }
+
+  MostarMensaje(mensaje: string = "este es el mensaje", ganador: boolean = false) {
+		this.Mensajes = mensaje;
+		var x = document.getElementById("snackbar");
+		if (ganador) {
+			x.className = "show Ganador";
+		} else {
+			x.className = "show Perdedor";
+		}
+		var modelo = this;
+		setTimeout(function () {
+			x.className = x.className.replace("show", "");
+		}, 3000);
+		console.info("objeto", x);
+	}
+
   MoverBarraDeProgreso() {
     
     this.logeando=false;

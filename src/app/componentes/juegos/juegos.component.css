@@ -1,0 +1,9 @@
+.panel
+{
+    height: 125px;
+    background-image: url("https://i.pinimg.com/originals/61/a8/7f/61a87f11704b95124d90f58fa3f23227.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}

@@ -1,6 +1,32 @@
-body{
-    font-family: cursive !important;
-}
+.underlay-photo {
+    animation: hue-rotate 6s infinite;
+    background: url('https://media.istockphoto.com/photos/design-elements-background-of-letters-being-sucked-up-by-gravity-picture-id1055446200');
+    background-size: cover;
+    -webkit-filter: grayscale(30%);
+    z-index: -1;
+  }
+  .underlay-black {
+    background: rgba(0,0,0,0.7);
+    z-index: -1;
+  }
+
+  body {
+    font-family: cursive !important;  
+    background: url("https://media.istockphoto.com/photos/design-elements-background-of-letters-being-sucked-up-by-gravity-picture-id1055446200") no-repeat center center fixed;
+    background-size: 100% 100%;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+ 
+  /*
+.backgroun{ 
+    background: url("");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }*/
 
 form {
     border: 10px solid #f1f1f1;

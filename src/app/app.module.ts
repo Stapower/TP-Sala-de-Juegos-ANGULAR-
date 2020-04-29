@@ -58,6 +58,14 @@ import { JuegoDeMemoriaComponent } from './componentes/juego-de-memoria/juego-de
 //import { ResaltarDosDirective } from './directivas/resaltar-dos.directive'
 import { SexoPipe } from './pipes/sexo.pipe';
 
+
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+
+import firebaseConfig from '../environments/environment';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,7 +96,9 @@ import { SexoPipe } from './pipes/sexo.pipe';
     BrowserModule,
     FormsModule,
     RuteandoModule,
-    HttpModule/*,
+    HttpModule,
+    AngularFireModule.initializeApp(firebaseConfig.firebase),
+    AngularFireAuthModule    /*,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB6f8x4IjRlesQ3oETc6BXYQHVRTOlY3Ys'
     })*/

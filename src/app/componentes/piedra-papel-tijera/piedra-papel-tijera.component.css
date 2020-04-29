@@ -19,6 +19,9 @@ body{
     
     }
     
+    img{
+    }
+
     #inicial img{
     
       margin:0 auto;
@@ -32,21 +35,21 @@ body{
     }
     
     #juego{
-    
+  
       display: none;
     
     }
     
     
     #juego div{
-    
+
       display: inline;
       padding:15px;
     
     }
     
     #juego input{
-    
+
     padding:3px;
     
     }

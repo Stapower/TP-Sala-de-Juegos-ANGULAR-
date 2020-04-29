@@ -1,15 +1,17 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+
 import { JuegoAnagrama } from '../../clases/juego-anagrama'
 import { JuegoServiceService } from "../../servicios/juego-service.service";
 
 @Component({
-	selector: 'app-anagrama',
-	templateUrl: './anagrama.component.html',
-	styleUrls: ['./anagrama.component.css']
+  selector: 'app-anagrama2',
+  templateUrl: './anagrama2.component.html',
+  styleUrls: ['./anagrama2.component.css']
 })
+export class Anagrama2Component implements OnInit {
 
-export class AnagramaComponent implements OnInit {
-	nuevoJuego: JuegoAnagrama;
+  nuevoJuego: JuegoAnagrama;
 	Mensajes;
 
 	constructor(public jws: JuegoServiceService) {
@@ -50,7 +52,7 @@ export class AnagramaComponent implements OnInit {
 
 	}
 
-	ngOnInit() {
-	}
+  ngOnInit(): void {
+  }
 
 }
